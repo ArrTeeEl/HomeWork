@@ -46,5 +46,3 @@ elif choice== 6 :
     print("Result:", milMultipler(Num), "mm")
 else:
     print("Invalid choice!")
-
-
