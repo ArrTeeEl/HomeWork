@@ -8,11 +8,25 @@ def do():
 def upload_document():
     file_path = filedialog.askopenfilename(
         title="Select Age Verification Document",
-        filetypes=[("PDF files", "*.pdf"), ("Image files", "*.jpg;*.png"), ("All files", "*.*")]
+        filetypes=[("PDF files", "*.pdf"), ("Image files", "*.jpg *.png"), ("All files", "*.*")]
     )
     if file_path:
         entry5.delete(0, END)
         entry5.insert(0, file_path)
+
+def age_check():
+    try:
+        age = int(entry3.get())
+        return True
+
+    except ValueError:
+        print("Age Must Be a Number")
+        return False
+
+
+def register():
+    if age_check():
+        do()
 
 
 window = Tk()
@@ -40,7 +54,7 @@ label2.pack(pady=(10,0))
 entry2 = Entry(window, width=30, font=("Arial", 12))
 entry2.pack(pady=(0,10))
 
-label3 = Label(window, text="Age:", font=("Arial", 12))
+label3 = Label(window, text="Age:", font=("Arial", 12),)
 label3.pack(pady=(10,0))
 
 entry3 = Entry(window, width=30, font=("Arial", 12))
@@ -82,7 +96,7 @@ label7.pack(pady=(10,0))
 button1 = Button(window, text="Register", 
                  font=("Arial", 10), 
                  bg="#d1a5a5",
-                 command=do,
+                 command=register,
                  fg="green")
 button1.pack(pady=(10,0))
 
